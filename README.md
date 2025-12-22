@@ -5,6 +5,7 @@ die im Rahmen meines Lernpfads zur Zertifizierung
 **DP-600 – Microsoft Fabric Analytics Engineer** entstanden sind.
 
 Der Fokus liegt auf:
+
 - strukturiertem Arbeiten mit Microsoft Fabric
 - reproduzierbaren Analysen mittels Notebooks
 - sauberer Versionierung über GitHub
@@ -32,13 +33,16 @@ Diese Struktur sollte **nicht manuell verändert** werden.
 ## 🧪 Übungen
 
 ### ▶️ Exercise 01 – Sales Umsatzanalyse (SQL & Lakehouse)
+
 **Inhalt:**
+
 - Anlegen eines Lakehouse in Microsoft Fabric
 - Laden einer CSV-Datei (`sales.csv`)
 - Erste analytische Abfragen mit SQL
 - Aggregation und Sortierung von Umsätzen
 
 **Schwerpunkte:**
+
 - Lakehouse-Grundlagen
 - Arbeiten mit Tabellen
 - SQL in Fabric Notebooks
@@ -49,13 +53,16 @@ Diese Struktur sollte **nicht manuell verändert** werden.
 ---
 
 ### ▶️ Exercise 02 – Umsatzanalyse mit PySpark & Visualisierung
+
 **Inhalt:**
+
 - Weiterverarbeitung der Lakehouse-Daten mit PySpark
 - Aggregationen auf Spark-Ebene
 - Konvertierung nach pandas
 - Visualisierung der Ergebnisse mit seaborn
 
 **Schwerpunkte:**
+
 - PySpark DataFrames
 - Übergang von verteiltem Compute zu Visualisierung
 - typischer Analytics-Workflow in Fabric
@@ -66,6 +73,7 @@ Diese Struktur sollte **nicht manuell verändert** werden.
 ---
 
 ## 🛠️ Verwendete Technologien
+
 - Microsoft Fabric
 - Fabric Notebooks
 - Lakehouse
@@ -78,11 +86,13 @@ Diese Struktur sollte **nicht manuell verändert** werden.
 ---
 
 ## 🎓 Einordnung im Lernpfad
+
 Die hier enthaltenen Übungen sind Teil eines strukturierten Lernpfads
 zur Vorbereitung auf die **DP-600 – Microsoft Fabric Analytics Engineer**
 Zertifizierung.
 
 Sie bilden die Grundlage für weiterführende Themen wie:
+
 - Datenpipelines
 - semantische Modelle
 - Integration mit Power BI
@@ -91,8 +101,9 @@ Sie bilden die Grundlage für weiterführende Themen wie:
 ---
 
 ## ⚠️ Hinweise zur Arbeit mit Fabric & Git
+
 - Notebooks und Lakehouse-Items werden **immer in Fabric** erstellt, umbenannt oder gelöscht
 - Git dient ausschließlich der **Versionierung**
 - Ordner- und Dateinamen in diesem Verzeichnis sollten **nicht manuell geändert** werden
 - Dieses Repo `MICROSOFT-DATA-AI` enthält .md Dateien welche über ein lokales Repo in VS-Code
-  gepflegt werden. 
+  gepflegt werden.
