@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Exercise2_Notebook1",
+    "description": "Notebook für die Übung - Analyze data with Apche Spark in Fabric"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "854f4a55-10fd-9f8b-49b8-b80b2ee75929"
+  }
+}
