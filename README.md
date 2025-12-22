@@ -94,3 +94,5 @@ Sie bilden die Grundlage für weiterführende Themen wie:
 - Notebooks und Lakehouse-Items werden **immer in Fabric** erstellt, umbenannt oder gelöscht
 - Git dient ausschließlich der **Versionierung**
 - Ordner- und Dateinamen in diesem Verzeichnis sollten **nicht manuell geändert** werden
+- Dieses Repo `MICROSOFT-DATA-AI` enthält .md Dateien welche über ein lokales Repo in VS-Code
+  gepflegt werden. 
