@@ -906,4 +906,4 @@ plt.show()
 
 # MARKDOWN ********************
 
-# **Die Übung ist beendet**
+# **Die Übung ist beendet.**
