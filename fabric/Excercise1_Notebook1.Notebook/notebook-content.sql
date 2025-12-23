@@ -22,17 +22,21 @@
 
 -- CELL ********************
 
--- Exercise 1: Umsatzanalyse nach Artikel
--- Quelle: Lakehouse-Tabelle "sales"
--- Ziel: Berechnung des Gesamtumsatzes pro Artikel
--- Umsatz = Menge (Quantity) * Einzelpreis (UnitPrice)
-
-SELECT
-    Item,                                   -- Artikelname
-    SUM(Quantity * UnitPrice) AS Revenue   -- Gesamtumsatz pro Artikel
-FROM sales
-GROUP BY Item                              -- Aggregation pro Artikel
-ORDER BY Revenue DESC;                     -- Sortierung: höchster Umsatz zuerst
+-- MAGIC %%sql
+-- MAGIC -- Exercise 1: Umsatzanalyse nach Artikel
+-- MAGIC -- Quelle: Lakehouse-Tabelle "sales"
+-- MAGIC -- Ziel: Berechnung des Gesamtumsatzes pro Artikel
+-- MAGIC -- Umsatz = Menge (Quantity) * Einzelpreis (UnitPrice)
+-- MAGIC 
+-- MAGIC SELECT
+-- MAGIC     Item,                                   -- Artikelname
+-- MAGIC     SUM(Quantity * UnitPrice) AS Revenue   -- Gesamtumsatz pro Artikel
+-- MAGIC FROM sales
+-- MAGIC GROUP BY Item                              -- Aggregation pro Artikel
+-- MAGIC ORDER BY Revenue DESC                     -- Sortierung: höchster Umsatz zuerst
+-- MAGIC LIMIT 10;
+-- MAGIC 
+-- MAGIC -- Kann nicht im PySpark-Kernel über VS-Code ausgeführt werden ohne Angabe von %%sql !!!
 
 
 -- METADATA ********************
