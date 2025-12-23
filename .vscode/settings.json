@@ -1,11 +1,4 @@
-{
-  "languagetool.language": "en,de-DE",
-  "languagetool.enabled": true,
-  "languagetool.level": "picky",
-  "languagetool.enabledRules": [],
-  "languagetool.disabledRules": [],
-  "languagetool.enabledFileTypes": [
-    "markdown",
-    "plaintext"
-  ]
-}
+
+
+
+
