@@ -1,11 +1,13 @@
 # Exercise 02 – Umsatzanalyse mit PySpark & Visualisierung (Microsoft Fabric)
 
 ## 🎯 Ziel der Übung
+
 Ziel dieser Übung ist es, die in Exercise 01 erstellten Lakehouse-Daten mit **PySpark**
 weiterzuverarbeiten und die Ergebnisse mithilfe von **Python-Visualisierungen**
 anschaulich darzustellen.
 
 Der Fokus liegt auf:
+
 - Arbeiten mit PySpark DataFrames in Microsoft Fabric
 - Aggregationen und Transformationen auf Spark-Ebene
 - Übergang von verteiltem Compute (Spark) zu lokaler Visualisierung
@@ -15,6 +17,7 @@ Der Fokus liegt auf:
 ---
 
 ## 📦 Datengrundlage
+
 - **Quelle:** `sales.csv`
 - **Speicherort:** Microsoft Fabric Lakehouse
 - **Tabelle:** `sales`
@@ -28,6 +31,7 @@ Die Daten wurden bereits in Exercise 01 in das Lakehouse geladen.
 ---
 
 ## 🛠️ Verwendete Technologien
+
 - Microsoft Fabric Notebook
 - Apache Spark (PySpark)
 - pandas
@@ -39,6 +43,7 @@ Die Daten wurden bereits in Exercise 01 in das Lakehouse geladen.
 ## 🧮 Analyseschritte
 
 ### 1️⃣ Laden der Lakehouse-Tabelle als Spark DataFrame
+
 ```python
 df = spark.read.table("sales")
 ```
@@ -46,6 +51,7 @@ df = spark.read.table("sales")
 ---
 
 ### 2️⃣ Berechnung des Umsatzes pro Produkt
+
 ```python
 from pyspark.sql.functions import col, sum as _sum
 
@@ -60,6 +66,7 @@ revenue_df = (
 ---
 
 ### 3️⃣ Konvertierung in pandas DataFrame
+
 ```python
 pdf = revenue_df.toPandas()
 ```
@@ -73,6 +80,7 @@ Die eigentliche Berechnung erfolgt weiterhin vollständig auf Spark-Ebene.
 ## 📊 Visualisierung der Ergebnisse
 
 ### 4️⃣ Balkendiagramm: Umsatz pro Produkt
+
 ```python
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -95,6 +103,7 @@ plt.show()
 ---
 
 ## 📌 Erkenntnisse
+
 - Spark eignet sich hervorragend für skalierbare Datenverarbeitung
 - Für Visualisierungen ist häufig eine Konvertierung nach pandas sinnvoll
 - Microsoft Fabric ermöglicht einen nahtlosen Übergang zwischen
@@ -105,7 +114,9 @@ plt.show()
 ---
 
 ## 🔗 Einordnung im Lernpfad
+
 Diese Übung baut direkt auf **Exercise 01** auf und erweitert sie um:
+
 - praktische PySpark-Nutzung
 - Verständnis für Datenflüsse innerhalb von Fabric
 - erste Visualisierungsschritte für Analyse & Reporting
