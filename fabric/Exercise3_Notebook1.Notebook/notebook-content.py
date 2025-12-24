@@ -184,22 +184,25 @@ def.write.format("delta").saveAsTable("external_products", path="abfss://6331899
 '''
 
 # Deswegen ein kleiner Workaround - Semantische Aufteilung:
-
+'''
 external_path = (
     "abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/"
     "86add053-f7b2-44c0-a5a5-5ca270ddcf6d/"
     "Files/external_products"
 )
-
+'''
+# neuer Versuch
+path = 'Files/external_products'
 
 # Nächste Stolperfalle -saveAsTable wenn eine Tabelle EIN mal als managed gespeichert wurde, dann erzeugt
 # saveAsTable immmer wieder eine managed table. -> Deswegen zuerst nur "save" und dann "explizit" registrieren.
 
-(df.write
+(df.repartition(2)
+    .write
     .format("delta")
     .mode("overwrite")
     .option("overwriteSchema", "True")
-    .saveAsTable("external_products", path=external_path)
+    .save(path)
 )
 
 
@@ -207,6 +210,20 @@ external_path = (
 
 # META {
 # META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC CREATE TABLE external_products 
+# MAGIC USING DELTA
+# MAGIC LOCATION 'abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/86add053-f7b2-44c0-a5a5-5ca270ddcf6d/Files/external_products';
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
 # META   "language_group": "synapse_pyspark"
 # META }
 
