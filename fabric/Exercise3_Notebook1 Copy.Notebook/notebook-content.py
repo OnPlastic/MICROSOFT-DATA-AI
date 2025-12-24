@@ -179,12 +179,13 @@ display(
 
 # Die Anweisung mit der Pfadangbe in eine Zeile zu schreiben ist nicht gut lesbar!
 
-'''
-def.write.format("delta").saveAsTable("external_products", path="abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/86add053-f7b2-44c0-a5a5-5ca270ddcf6d/Files")
-'''
+
+df.write.format("delta").saveAsTable("external_products", path="abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/86add053-f7b2-44c0-a5a5-5ca270ddcf6d/Files/external_products")
+
 
 # Deswegen ein kleiner Workaround - Semantische Aufteilung:
 '''
+abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/86add053-f7b2-44c0-a5a5-5ca270ddcf6d/Files
 external_path = (
     "abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/"
     "86add053-f7b2-44c0-a5a5-5ca270ddcf6d/"
@@ -192,11 +193,12 @@ external_path = (
 )
 '''
 # neuer Versuch
+'''
 path = 'Files/external_products'
-
+'''
 # Nächste Stolperfalle -saveAsTable wenn eine Tabelle EIN mal als managed gespeichert wurde, dann erzeugt
 # saveAsTable immmer wieder eine managed table. -> Deswegen zuerst nur "save" und dann "explizit" registrieren.
-
+'''
 (df.repartition(2)
     .write
     .format("delta")
@@ -204,7 +206,7 @@ path = 'Files/external_products'
     .option("overwriteSchema", "True")
     .save(path)
 )
-
+'''
 
 # METADATA ********************
 
@@ -213,19 +215,12 @@ path = 'Files/external_products'
 # META   "language_group": "synapse_pyspark"
 # META }
 
-# CELL ********************
+# MARKDOWN ********************
 
-# MAGIC %%sql
-# MAGIC CREATE TABLE external_products 
-# MAGIC USING DELTA
-# MAGIC LOCATION 'abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/86add053-f7b2-44c0-a5a5-5ca270ddcf6d/Files/external_products';
-
-# METADATA ********************
-
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
+# %%sql
+# CREATE TABLE external_products 
+# USING DELTA
+# LOCATION 'abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/86add053-f7b2-44c0-a5a5-5ca270ddcf6d/Files/external_products';
 
 # MARKDOWN ********************
 
@@ -299,5 +294,15 @@ display(
 
 # META {
 # META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
