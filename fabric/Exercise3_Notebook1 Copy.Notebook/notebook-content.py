@@ -215,30 +215,51 @@ path = 'Files/external_products'
 # META   "language_group": "synapse_pyspark"
 # META }
 
-# MARKDOWN ********************
+# CELL ********************
 
-# %%sql
-# CREATE TABLE external_products 
-# USING DELTA
-# LOCATION 'abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/86add053-f7b2-44c0-a5a5-5ca270ddcf6d/Files/external_products';
+# MAGIC %%sql
+# MAGIC CREATE TABLE external_products 
+# MAGIC USING DELTA
+# MAGIC LOCATION 'abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/86add053-f7b2-44c0-a5a5-5ca270ddcf6d/Files/external_products';
 
-# MARKDOWN ********************
+# METADATA ********************
 
-# %%sql
-# -- Zuerst löschen falls vorhanden
-# 
-# DROP TABLE IF EXISTS external_products_ext;
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
 
-# MARKDOWN ********************
+# CELL ********************
 
-# %%sql
-# /* Auch hier kleiner Workaround um die Zeile aufzuteilen. In SQL etwas anders als in Python
-#    !!! LOCATION mit ${external_path} hat nicht funktioniert -> path in einer Zeile. */
-# 
-# CREATE TABLE external_products
-# USING DELTA
-# LOCATION 'abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/86add053-f7b2-44c0-a5a5-5ca270ddcf6d/Files/external_products';
+# MAGIC %%sql
+# MAGIC -- Zuerst löschen falls vorhanden
+# MAGIC 
+# MAGIC DROP TABLE IF EXISTS external_products_ext;
 
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC /* Auch hier kleiner Workaround um die Zeile aufzuteilen. In SQL etwas anders als in Python
+# MAGIC    !!! LOCATION mit ${external_path} hat nicht funktioniert -> path in einer Zeile. */
+# MAGIC 
+# MAGIC CREATE TABLE external_products
+# MAGIC USING DELTA
+# MAGIC LOCATION 'abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/86add053-f7b2-44c0-a5a5-5ca270ddcf6d/Files/external_products';
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -294,15 +315,5 @@ display(
 
 # META {
 # META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
