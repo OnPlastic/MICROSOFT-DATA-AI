@@ -1,5 +1,17 @@
 [
   {
+    "name": "external_products2",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Files/external_products2",
+        "itemId": "00000000-0000-0000-0000-000000000000",
+        "workspaceId": "00000000-0000-0000-0000-000000000000"
+      }
+    }
+  },
+  {
     "name": "external_products",
     "path": "/Tables/dbo",
     "target": {
