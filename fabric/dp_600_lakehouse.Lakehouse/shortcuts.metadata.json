@@ -22,5 +22,17 @@
         "workspaceId": "00000000-0000-0000-0000-000000000000"
       }
     }
+  },
+  {
+    "name": "debug_write_tbl",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Files/debug_write_01",
+        "itemId": "00000000-0000-0000-0000-000000000000",
+        "workspaceId": "00000000-0000-0000-0000-000000000000"
+      }
+    }
   }
 ]

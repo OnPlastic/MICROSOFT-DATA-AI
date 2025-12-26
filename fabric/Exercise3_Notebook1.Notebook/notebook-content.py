@@ -291,7 +291,227 @@ display(df.limit(10).toPandas())
 # MAGIC %%sql
 # MAGIC CREATE TABLE products
 # MAGIC USING DELTA
-# MAGIC LOCATION 'Files/external_products3';
+# MAGIC LOCATION "Files/external_products3";
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+print("DF rows BEFORE:", df.count())
+display(df.limit(10))
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+debug_path = "Files/debug_write_01"
+
+(df.coalesce(1).write
+  .format("delta")
+  .mode("overwrite")
+  .option("overwriteSchema", "true")
+  .save(debug_path)
+)
+
+print("Wrote to:", debug_path)
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+df_back = spark.read.format("delta").load("Files/debug_write_01")
+print("DF rows AFTER (read-back):", df_back.count())
+display(df_back.limit(10))
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from notebookutils import mssparkutils
+
+mssparkutils.fs.ls("Files/debug_write_01")
+mssparkutils.fs.ls("Files/debug_write_01/_delta_log")
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC CREATE TABLE debug_write_tbl
+# MAGIC USING DELTA
+# MAGIC LOCATION 'abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/86add053-f7b2-44c0-a5a5-5ca270ddcf6d/Files/debug_write_01';
+# MAGIC -- hat funktioniert 
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+spark.sql("""
+CREATE TABLE debug_write_tbl
+USING DELTA
+LOCATION 'Files/debug_write_01'
+""")
+-- hat nicht funktioniert
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+loc = "Files/debug_write_01"
+loc = loc.strip()  # entfernt Whitespace, Tabs, Newlines
+
+spark.sql(f"""
+CREATE TABLE debug_write_tbl
+USING DELTA
+LOCATION '{loc}'
+""")
+# hat nicht funktioniert
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC SELECT *
+# MAGIC FROM debug_write_tbl
+# MAGIC LIMIT 10;
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+spark.table("debug_write_tbl").limit(10).show()
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC DROP TABLE debug_write_tbl;
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC CREATE TABLE debug_write_tbl
+# MAGIC USING DELTA
+# MAGIC LOCATION '/Files/debug_write_01';
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC CREATE TABLE debug_write_tbl
+# MAGIC USING DELTA
+# MAGIC LOCATION 'Files/debug_write_01';
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC CREATE TABLE debug_write_tbl
+# MAGIC USING DELTA
+# MAGIC LOCATION 'abfss://63318995-edf3-4ecd-a82e-fc8e0560ed46@onelake.dfs.fabric.microsoft.com/86add053-f7b2-44c0-a5a5-5ca270ddcf6d/Files/debug_write_01';
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+spark.table("debug_write_tbl").limit(10).show()
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC DESCRIBE FORMATTED debug_write_tbl;
+
 
 # METADATA ********************
 
