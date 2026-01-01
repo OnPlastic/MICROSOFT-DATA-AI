@@ -15,9 +15,9 @@ shared #"Attendance csv" = let
 in
   #"Hinzugefügte benutzerdefinierte Spalte";
 shared #"Attendance csv_DataDestination" = let
-  Pattern = Lakehouse.Contents([CreateNavigationProperties = false, EnableFolding = false]),
+  Pattern = Lakehouse.Contents([HierarchicalNavigation = null, CreateNavigationProperties = false, EnableFolding = false]),
   Navigation_1 = Pattern{[workspaceId = "63318995-edf3-4ecd-a82e-fc8e0560ed46"]}[Data],
-  Navigation_2 = Navigation_1{[lakehouseId = "69da220e-8867-4d1e-bef6-70dd319bb2d0"]}[Data],
+  Navigation_2 = Navigation_1{[lakehouseId = "b78caba8-7599-4cc3-811c-8c2370edfe5f"]}[Data],
   TableNavigation = Navigation_2{[Id = "attendance", ItemKind = "Table"]}?[Data]?
 in
   TableNavigation;
