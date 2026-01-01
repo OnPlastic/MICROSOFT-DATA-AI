@@ -1,0 +1,27 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "Dataflow 1",
+  "queryGroups": [],
+  "documentLocale": "de-DE",
+  "queriesMetadata": {
+    "Attendance csv": {
+      "queryId": "13b5e390-42fd-479f-9934-c0dfe1d8acbc",
+      "queryName": "Attendance csv",
+      "loadEnabled": false
+    },
+    "Attendance csv_DataDestination": {
+      "queryId": "c801c020-f8bc-4da3-b7b9-3718158f9eed",
+      "queryName": "Attendance csv_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"1696bd45-5474-4851-b8fe-2a9eeb4edf5f\",\"DatasourceId\":\"e37eca33-772d-4c41-ab98-0f197e05806f\"}"
+    }
+  ]
+}

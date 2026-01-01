@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "name": "external",
+    "path": "/Files",
+    "target": {
+      "type": "AdlsGen2",
+      "adlsGen2": {
+        "connectionId": "f7891c78-1a65-4da5-b772-877513471576",
+        "location": "https://neusimlearn.dfs.core.windows.net",
+        "subpath": "/universitycontainer"
+      }
+    }
+  }
+]
